@@ -5,6 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "eval classifier",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/train_test_classifier.py",
+            "args": [
+                "eval",
+                "classifier_data/dual_obs5_h=15/",
+                "trials/dual_obs5_h=15/June_26_00-43-28_07326f3f54/best_checkpoint"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
             "name": "train classifier",
             "type": "python",
             "request": "launch",
@@ -12,12 +25,31 @@
             "program": "./scripts/train_test_classifier.py",
             "args": [
                 "train",
-                "classifier_data/dual_obs5/",
+                "classifier_data/dual_obs5_h=15/",
                 "hparams/dual.json",
                 "-l",
-                "dual_obs5",
-                "--checkpoint",
-                "trials/dual_obs5/June_25_22-41-45_35dac9dce8/latest_checkpoint"
+                "dual_obs5_h=15",
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "make classifier dataset",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/make_classifier_dataset.py",
+            "args": [
+                "fwd_model_data/dual_obs5_1593101457_f29474e696_2048/",
+                "labeling_params/dual_long.json",
+                "dy_trials/dual_no_obs2_0/best_checkpoint",
+                "dy_trials/dual_no_obs2_1/best_checkpoint",
+                "dy_trials/dual_no_obs2_2/best_checkpoint",
+                "dy_trials/dual_no_obs2_3/best_checkpoint",
+                "dy_trials/dual_no_obs2_4/best_checkpoint",
+                "dy_trials/dual_no_obs2_5/best_checkpoint",
+                "dy_trials/dual_no_obs2_6/best_checkpoint",
+                "dy_trials/dual_no_obs2_7/best_checkpoint",
+                "classifier_data/dual_obs5_h=15",
             ],
             "console": "integratedTerminal"
         },
@@ -28,7 +60,7 @@
             "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
             "program": "./scripts/make_recovery_dataset.py",
             "args": [
-                "fwd_model_data/dual_obs2_1592762085_e7c4667d52_1024",
+                "fwd_model_data/dual_obs5_1593101457_f29474e696_2048/",
                 "labeling_params/dual_recovery.json",
                 "dy_trials/dual_no_obs2_0/best_checkpoint",
                 "dy_trials/dual_no_obs2_1/best_checkpoint",
@@ -52,6 +84,17 @@
             "args": [
                 "classifier_data/dual_obs5/",
                 "3d"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "test classifier",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/test_classifier.py",
+            "args": [
+                "test_configs/dual_crash.json",
             ],
             "console": "integratedTerminal"
         },
