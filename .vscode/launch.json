@@ -14,6 +14,10 @@
                 "train",
                 "classifier_data/dual_obs5/",
                 "hparams/dual.json",
+                "-l",
+                "dual_obs5",
+                "--checkpoint",
+                "trials/dual_obs5/June_25_22-41-45_35dac9dce8/latest_checkpoint"
             ],
             "console": "integratedTerminal"
         },

@@ -13,8 +13,17 @@
             },
             "group": {
                 "kind": "build",
-                "isDefault": true,
-            },
+                "isDefault": true
+            }
+        },
+        {
+            "label": "classifiers tensorboard",
+            "type": "shell",
+            "command": "tensorboard --logdir trials",
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers"
+            }
         }
     ]
 }
