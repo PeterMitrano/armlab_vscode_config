@@ -1,0 +1,41 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/pmitrano/catkin_ws/devel/include/**",
+                "/opt/ros/melodic/include/**",
+                "/home/pmitrano/catkin_ws/src/arc_utilities/include/**",
+                "/home/pmitrano/catkin_ws/src/kuka_iiwa_interface/iiwa_robot_controllers/include/**",
+                "/home/pmitrano/catkin_ws/src/kuka_iiwa_interface/lcm/include/**",
+                "/home/pmitrano/catkin_ws/src/link_bot/link_bot_gazebo/include/**",
+                "/home/pmitrano/catkin_ws/src/kuka_iiwa_interface/linux_fri_client/include/**",
+                "/home/pmitrano/catkin_ws/src/link_bot/merrrt_visualization/include/**",
+                "/home/pmitrano/catkin_ws/src/sdf_tools/include/**",
+                "/home/pmitrano/catkin_ws/src/geometry2/tf2/include/**",
+                "/home/pmitrano/catkin_ws/src/geometry2/tf2_bullet/include/**",
+                "/home/pmitrano/catkin_ws/src/geometry2/tf2_eigen/include/**",
+                "/home/pmitrano/catkin_ws/src/geometry2/tf2_geometry_msgs/include/**",
+                "/home/pmitrano/catkin_ws/src/geometry2/tf2_kdl/include/**",
+                "/home/pmitrano/catkin_ws/src/geometry2/tf2_msgs/include/**",
+                "/home/pmitrano/catkin_ws/src/geometry2/tf2_ros/include/**",
+                "/home/pmitrano/catkin_ws/src/geometry2/tf2_sensor_msgs/include/**",
+                "/home/pmitrano/catkin_ws/src/link_bot/victor_3d_rope_shim/include/**",
+                "/home/pmitrano/catkin_ws/src/kuka_iiwa_interface/victor_hardware_interface/include/**",
+                "/home/pmitrano/catkin_ws/src/kuka_iiwa_interface/victor_ikfast_plugins/victor_ikfast_left_arm_plugin/include/**",
+                "/home/pmitrano/catkin_ws/src/kuka_iiwa_interface/victor_ikfast_plugins/victor_ikfast_right_arm_plugin/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++20",
+            "compileCommands": "/home/pmitrano/catkin_ws/build/compile_commands.json"
+        }
+    ],
+    "version": 4
+}

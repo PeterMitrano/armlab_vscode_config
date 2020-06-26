@@ -1,0 +1,6 @@
+*src*
+.catkin_workspace
+.catkin_tools
+*build*
+*devel*
+my_make

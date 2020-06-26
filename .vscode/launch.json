@@ -1,0 +1,55 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "train classifier",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/train_test_classifier.py",
+            "args": [
+                "train",
+                "classifier_data/dual_obs5/",
+                "hparams/dual.json",
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "make recovery dataset",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/make_recovery_dataset.py",
+            "args": [
+                "fwd_model_data/dual_obs2_1592762085_e7c4667d52_1024",
+                "labeling_params/dual_recovery.json",
+                "dy_trials/dual_no_obs2_0/best_checkpoint",
+                "dy_trials/dual_no_obs2_1/best_checkpoint",
+                "dy_trials/dual_no_obs2_2/best_checkpoint",
+                "dy_trials/dual_no_obs2_3/best_checkpoint",
+                "dy_trials/dual_no_obs2_4/best_checkpoint",
+                "dy_trials/dual_no_obs2_5/best_checkpoint",
+                "dy_trials/dual_no_obs2_6/best_checkpoint",
+                "dy_trials/dual_no_obs2_7/best_checkpoint",
+                "cl_trials/dual_obs3_retrained_udnn/June_23_12-42-57_6b3728e9f4/best_checkpoint",
+                "recovery_data/dual_obs3",
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "viz classifier dataset",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/visualize_classifier_dataset.py",
+            "args": [
+                "classifier_data/dual_obs5/",
+                "3d"
+            ],
+            "console": "integratedTerminal"
+        },
+    ]
+}

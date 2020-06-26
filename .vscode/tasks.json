@@ -1,0 +1,20 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "my catkin make",
+            "type": "shell",
+            "command": "catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1",
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": [
+                    "absolute"
+                ]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true,
+            },
+        }
+    ]
+}

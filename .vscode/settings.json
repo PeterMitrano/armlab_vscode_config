@@ -1,0 +1,45 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/pmitrano/catkin_ws/src/link_bot/moonshine/src",
+        "/home/pmitrano/catkin_ws/src/link_bot/link_bot_classifiers/src",
+        "/home/pmitrano/catkin_ws/src/link_bot/link_bot_pycommon/src",
+        "/home/pmitrano/catkin_ws/src/link_bot/link_bot_data/src",
+        "/home/pmitrano/catkin_ws/src/link_bot/state_space_dynamics/src",
+        "/home/pmitrano/catkin_ws/src/link_bot/link_bot_gazebo/src",
+        "/home/pmitrano/catkin_ws/src/link_bot/link_bot_planning/src",
+        "/home/pmitrano/catkin_ws/src/link_bot/link_bot_sdf_tools/src",
+        "/home/pmitrano/catkin_ws/src/mps_shape_completion/shape_completion_training/src",
+        "/home/pmitrano/catkin_ws/src/ignition/src",
+        "/home/pmitrano/catkin_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages",
+    ],
+    "python.pythonPath": "/home/pmitrano/.local/opt/anaconda3/envs/merrrt2/bin/python",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "ros.distro": "melodic",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "files.exclude": {
+        ".catkin_tools/": true,
+        "build/": true,
+        "install/": true,
+        "devel/": true,
+        "logs/": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.associations": {
+        "*.world": "xml",
+        "*.sdf": "xml",
+        "array": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "optional": "cpp",
+        "mutex": "cpp",
+        "*.ipp": "cpp"
+    },
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.enablePreview": false
+}
