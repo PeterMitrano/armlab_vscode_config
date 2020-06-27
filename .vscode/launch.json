@@ -21,6 +21,23 @@
                 "classifier_data/dual_obs5_h=15/",
                 "trials/dual_obs5_h=15/June_26_00-43-28_07326f3f54/best_checkpoint"
             ],
+            "justMyCode": true,
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "train dynamics",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/state_space_dynamics",
+            "program": "./scripts/train_test.py",
+            "args": [
+                "train",
+                "fwd_model_data/victor_dual_no_obs_1593271835_5f9f2372fa_1024/",
+                "hparams/unconstrained_dynamics/rope_3d_no_obs.json",
+                "--checkpoint",
+                "trials/tmp/June_27_15-25-44_df4b5d7c4e/latest_checkpoint"
+            ],
+            "justMyCode": true,
             "console": "integratedTerminal"
         },
         {
@@ -36,6 +53,7 @@
                 "-l",
                 "dual_obs5_h=15",
             ],
+            "justMyCode": true,
             "console": "integratedTerminal"
         },
         {
@@ -57,6 +75,7 @@
                 "dy_trials/dual_no_obs2_7/best_checkpoint",
                 "classifier_data/dual_obs5_h=15",
             ],
+            "justMyCode": true,
             "console": "integratedTerminal"
         },
         {
@@ -79,7 +98,8 @@
                 "cl_trials/dual_obs3_retrained_udnn/June_23_12-42-57_6b3728e9f4/best_checkpoint",
                 "recovery_data/dual_obs3",
             ],
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "justMyCode": true
         },
         {
             "name": "viz classifier dataset",
@@ -91,6 +111,20 @@
                 "classifier_data/dual_obs5/",
                 "3d"
             ],
+            "justMyCode": true,
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "viz phase 1 dynamics dataset",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/visualize_dynamics_dataset.py",
+            "args": [
+                "fwd_model_data/victor_dual_no_obs_1593271835_5f9f2372fa_1024",
+                "3d"
+            ],
+            "justMyCode": true,
             "console": "integratedTerminal"
         },
         {
@@ -102,6 +136,7 @@
             "args": [
                 "test_configs/dual_crash.json",
             ],
+            "justMyCode": true,
             "console": "integratedTerminal"
         },
         {
@@ -114,9 +149,26 @@
                 "gazebo",
                 "dual",
                 "collect_dynamics_params/dual_no_obs.json",
-                "128",
+                "1024",
                 "fwd_model_data/victor_dual_no_obs"
             ],
+            "justMyCode": true,
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "collect phase 2 victor dual data",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/collect_dynamics_data.py",
+            "args": [
+                "gazebo",
+                "dual",
+                "collect_dynamics_params/dual_obs.json",
+                "1024",
+                "fwd_model_data/victor_dual_obs"
+            ],
+            "justMyCode": true,
             "console": "integratedTerminal"
         },
         {
@@ -126,6 +178,16 @@
             "cwd": "${workspaceFolder}/src/kuka_iiwa_interface/victor_hardware_interface",
             "program": "./scripts/arm_command_gui.py",
             "args": [],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "test occupancy",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_gazebo",
+            "program": "./scripts/test_occupancy_service.py",
+            "args": [],
+            "justMyCode": true,
             "console": "integratedTerminal"
         },
     ]
