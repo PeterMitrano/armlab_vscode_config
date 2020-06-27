@@ -119,5 +119,14 @@
             ],
             "console": "integratedTerminal"
         },
+        {
+            "name": "arm command gui",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/kuka_iiwa_interface/victor_hardware_interface",
+            "program": "./scripts/arm_command_gui.py",
+            "args": [],
+            "console": "integratedTerminal"
+        },
     ]
 }
