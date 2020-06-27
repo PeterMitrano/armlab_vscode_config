@@ -4,7 +4,7 @@
         {
             "label": "my catkin make",
             "type": "shell",
-            "command": "catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1",
+            "command": "catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 --cmake-args -DCMAKE_BUILD_TYPE=Release -DCATKIN_ENABLE_TESTING=OFF",
             "problemMatcher": {
                 "base": "$gcc",
                 "fileLocation": [

@@ -5,6 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "debug victor shim",
+            "type": "ros",
+            "request": "launch",
+            "target": "/home/pmitrano/catkin_ws/src/link_bot/victor_3d_rope_shim/launch/victor_shim.launch"
+        },
+        {
             "name": "eval classifier",
             "type": "python",
             "request": "launch",
@@ -95,6 +101,21 @@
             "program": "./scripts/test_classifier.py",
             "args": [
                 "test_configs/dual_crash.json",
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "collect phase 1 data",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/collect_dynamics_data.py",
+            "args": [
+                "gazebo",
+                "dual",
+                "collect_dynamics_params/dual_no_obs.json",
+                "128",
+                "fwd_model_data/victor_dual_no_obs"
             ],
             "console": "integratedTerminal"
         },

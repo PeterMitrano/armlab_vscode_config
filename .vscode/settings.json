@@ -14,7 +14,6 @@
         "/opt/ros/melodic/lib/python2.7/dist-packages",
     ],
     "python.pythonPath": "/home/pmitrano/.local/opt/anaconda3/envs/merrrt2/bin/python",
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "ros.distro": "melodic",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
@@ -38,7 +37,8 @@
         "ostream": "cpp",
         "optional": "cpp",
         "mutex": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "*.tcc": "cpp"
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.editor.enablePreview": false
