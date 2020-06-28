@@ -5,6 +5,25 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "world_interaction",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/devel_debug/lib/victor_3d_rope_shim/world_interaction",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
             "name": "debug victor shim",
             "type": "ros",
             "request": "launch",

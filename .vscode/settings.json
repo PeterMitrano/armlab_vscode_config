@@ -22,7 +22,9 @@
         "build/": true,
         "install/": true,
         "devel/": true,
-        "logs/": true
+        "logs/": true,
+        "build_debug/": true,
+        "devel_debug/": true,
     },
     "files.trimTrailingWhitespace": true,
     "files.associations": {

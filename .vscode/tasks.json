@@ -2,18 +2,25 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "my catkin make",
+            "label": "build release",
             "type": "shell",
-            "command": "catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 --cmake-args -DCMAKE_BUILD_TYPE=Release -DCATKIN_ENABLE_TESTING=OFF",
+            "command": "./my_make",
             "problemMatcher": {
                 "base": "$gcc",
                 "fileLocation": [
                     "absolute"
                 ]
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
+            }
+        },
+        {
+            "label": "build debug",
+            "type": "shell",
+            "command": "./my_make_debug",
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": [
+                    "absolute"
+                ]
             }
         },
         {
