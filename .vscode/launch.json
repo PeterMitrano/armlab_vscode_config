@@ -75,7 +75,7 @@
             "program": "./scripts/make_classifier_dataset.py",
             "args": [
                 "fwd_model_data/victor_dual_obs_2",
-                "labeling_params/dual_long.json",
+                "labeling_params/dual_horizon_testing.json",
                 "dy_trials/victor_dual_no_obs_1_0/best_checkpoint",
                 "dy_trials/victor_dual_no_obs_1_1/best_checkpoint",
                 "dy_trials/victor_dual_no_obs_1_2/best_checkpoint",
@@ -84,7 +84,7 @@
                 "dy_trials/victor_dual_no_obs_1_5/best_checkpoint",
                 "dy_trials/victor_dual_no_obs_1_6/best_checkpoint",
                 "dy_trials/victor_dual_no_obs_1_7/best_checkpoint",
-                "classifier_data/victor_dual",
+                "classifier_data/victor_dual_h=2",
             ],
             "justMyCode": true,
             "console": "integratedTerminal",
@@ -159,24 +159,6 @@
             }
         },
         {
-            "name": "viz classifier dataset",
-            "type": "python",
-            "request": "launch",
-            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
-            "program": "./scripts/visualize_classifier_dataset.py",
-            "args": [
-                "classifier_data/dual_obs5/",
-                "3d"
-            ],
-            "justMyCode": true,
-            "console": "integratedTerminal",
-            "presentation": {
-                "hidden": false,
-                "group": "visualization",
-                "order": 2
-            }
-        },
-        {
             "name": "viz phase 2 dynamics dataset",
             "type": "python",
             "request": "launch",
@@ -195,6 +177,24 @@
             }
         },
         {
+            "name": "viz classifier dataset",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/visualize_classifier_dataset.py",
+            "args": [
+                "classifier_data/victor_dual/",
+                "3d"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization",
+                "order": 3
+            }
+        },
+        {
             "name": "test occupancy",
             "type": "python",
             "request": "launch",
@@ -206,7 +206,7 @@
             "presentation": {
                 "hidden": false,
                 "group": "visualization",
-                "order": 2
+                "order": 4
             }
         },
         {
@@ -271,8 +271,8 @@
             "program": "./scripts/train_test_classifier.py",
             "args": [
                 "eval",
-                "classifier_data/dual_obs5_h=15/",
-                "trials/dual_obs5_h=15/June_26_00-43-28_07326f3f54/best_checkpoint"
+                "classifier_data/victor_dual/",
+                "trials/victor_dual/June_29_10-10-37_9a3d58fd69/best_checkpoint"
             ],
             "justMyCode": true,
             "console": "integratedTerminal",
