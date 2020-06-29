@@ -1,0 +1,17 @@
+#!/bin/sh
+
+catkin_make --build build_debug --cmake-args \
+  -DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
+  -DCATKIN_DEVEL_PREFIX=devel_debug \
+  -DCMAKE_BUILD_TYPE=Debug \
+  -DBOOST_ROOT=/home/pmitrano/.local/opt/anaconda3/envs/merrrt2 \
+  -DCATKIN_ENABLE_TESTING=OFF \
+  -DQt5_DIR:PATH=/home/pmitrano/.local/opt/anaconda3/envs/merrrt2/lib/cmake/Qt5 \
+  -DQt5Core_DIR:PATH=/home/pmitrano/.local/opt/anaconda3/envs/merrrt2/lib/cmake/Qt5Core \
+  -DQt5Gui_DIR:PATH=/home/pmitrano/.local/opt/anaconda3/envs/merrrt2/lib/cmake/Qt5Gui \
+  -DQt5Widgets_DIR:PATH=/home/pmitrano/.local/opt/anaconda3/envs/merrrt2/lib/cmake/Qt5Widgets \
+  -DPYTHON_EXECUTABLE=/home/pmitrano/.local/opt/anaconda3/envs/merrrt2/bin/python \
+  -DPYTHON_INCLUDE_DIR=/home/pmitrano/.local/opt/anaconda3/envs/merrrt2/include/python3.7m \
+  -DPYTHON_LIBRARY=/home/pmitrano/.local/opt/anaconda3/envs/merrrt2/lib/libpython3.7m.so \
+  $@
+
