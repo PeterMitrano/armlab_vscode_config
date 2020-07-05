@@ -41,5 +41,13 @@
                 "cwd": "${workspaceFolder}/src/link_bot/state_space_dynamics"
             }
         }
+        {
+            "label": "generate rope model",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/src/link_bot/link_bot_gazebo/Media/models/kinematic_rope",
+            },
+            "command": "n_links=25 mass=0.2 length=0.8 radius=0.01 erb kinematic_rope.erb > kinematic_rope.sdf",
+        },
     ]
 }
