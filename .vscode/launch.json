@@ -12,7 +12,51 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "collect phase 1 data",
+            "name": "collect phase 1 data [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/collect_dynamics_data.py",
+            "args": [
+                "gazebo",
+                "dragging",
+                "collect_dynamics_params/dragging_no_obs.json",
+                "1024",
+                "fwd_model_data/dragging_no_obs"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 1
+            }
+        },
+        {
+            "name": "train dynamics [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/state_space_dynamics",
+            "program": "./scripts/train_test.py",
+            "args": [
+                "train",
+                "fwd_model_data/dragging_no_obs_1594137516_a43e918715_1024",
+                "hparams/unconstrained_dynamics/dragging_no_obs.json",
+                "-l",
+                "dragging_no_obs",
+                "--ensemble-idx",
+                "0"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 2
+            }
+        },
+        {
+            "name": "collect phase 1 data [dual]",
             "type": "python",
             "request": "launch",
             "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
@@ -28,7 +72,7 @@
             "console": "integratedTerminal",
             "presentation": {
                 "hidden": false,
-                "group": "main workflow",
+                "group": "main workflow [dual]",
                 "order": 1
             }
         },
@@ -47,7 +91,7 @@
             "console": "integratedTerminal",
             "presentation": {
                 "hidden": false,
-                "group": "main workflow",
+                "group": "main workflow [dual]",
                 "order": 2
             }
         },
@@ -68,12 +112,33 @@
             "console": "integratedTerminal",
             "presentation": {
                 "hidden": false,
-                "group": "main workflow",
+                "group": "main workflow [dual]",
                 "order": 3
             }
         },
         {
-            "name": "collect phase 2 victor dual data",
+            "name": "collect phase 2 data [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/collect_dynamics_data.py",
+            "args": [
+                "gazebo",
+                "dragging",
+                "collect_dynamics_params/dragging_obs.json",
+                "1024",
+                "fwd_model_data/dragging_obs"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 4
+            }
+        },
+        {
+            "name": "collect phase 2 data [dual]",
             "type": "python",
             "request": "launch",
             "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
@@ -89,7 +154,7 @@
             "console": "integratedTerminal",
             "presentation": {
                 "hidden": false,
-                "group": "main workflow",
+                "group": "main workflow [dual]",
                 "order": 4
             }
         },
@@ -116,7 +181,7 @@
             "console": "integratedTerminal",
             "presentation": {
                 "hidden": false,
-                "group": "main workflow",
+                "group": "main workflow [dual]",
                 "order": 5
             }
         },
@@ -139,8 +204,33 @@
             "console": "integratedTerminal",
             "presentation": {
                 "hidden": false,
-                "group": "main workflow",
+                "group": "main workflow [dual]",
                 "order": 6
+            }
+        },
+        {
+            "name": "planning evaluation [full dynamics]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/planning_evaluation.py",
+            "args": [
+                "gazebo",
+                "planner_configs/victor_dual/full_dynamics.json",
+                "--nickname",
+                "full_dynamics",
+                "--n-total-plans",
+                "1",
+                "-vv",
+                "--timeout",
+                "600",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 7
             }
         },
         {
@@ -151,19 +241,20 @@
             "program": "./scripts/planning_evaluation.py",
             "args": [
                 "gazebo",
-                "planner_configs/victor_dual/classifier.json",
+                "planner_configs/victor_dual/classifier_multistep.json",
                 "--nickname",
                 "classifier",
                 "--n-total-plans",
-                "10",
+                "1",
+                "-vv",
                 "--timeout",
-                "30",
+                "600",
             ],
             "justMyCode": true,
             "console": "integratedTerminal",
             "presentation": {
                 "hidden": false,
-                "group": "main workflow",
+                "group": "main workflow [dual]",
                 "order": 7
             }
         },
@@ -185,7 +276,7 @@
             "console": "integratedTerminal",
             "presentation": {
                 "hidden": false,
-                "group": "main workflow",
+                "group": "main workflow [dual]",
                 "order": 6
             }
         },
@@ -210,7 +301,7 @@
             "console": "integratedTerminal",
             "presentation": {
                 "hidden": false,
-                "group": "main workflow",
+                "group": "main workflow [dual]",
                 "order": 7
             }
         },
@@ -235,7 +326,7 @@
             "console": "integratedTerminal",
             "presentation": {
                 "hidden": false,
-                "group": "main workflow",
+                "group": "main workflow [dual]",
                 "order": 7
             }
         },
@@ -254,18 +345,36 @@
             "console": "integratedTerminal",
             "presentation": {
                 "hidden": false,
-                "group": "main workflow",
+                "group": "main workflow [dual]",
                 "order": 8
             }
         },
         {
-            "name": "viz phase 1 dynamics dataset",
+            "name": "viz phase 1 dynamics dataset [dual]",
             "type": "python",
             "request": "launch",
             "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
             "program": "./scripts/visualize_dynamics_dataset.py",
             "args": [
                 "fwd_model_data/no_victor_dual_no_obs_longer",
+                "3d"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization",
+                "order": 1
+            }
+        },
+        {
+            "name": "viz phase 1 dynamics dataset [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/visualize_dynamics_dataset.py",
+            "args": [
+                "fwd_model_data/dragging_no_obs_1594137516_a43e918715_1024/",
                 "3d"
             ],
             "justMyCode": true,
@@ -319,8 +428,8 @@
             "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
             "program": "./scripts/plot_results.py",
             "args": [
-                "results/dual-all-compare_1593928708_d740f44939/classifier_0",
-                "0-10"
+                "results/dual-all-compare_1593969666_807afaacf0/classifier_multistep_0",
+                "0-49"
             ],
             "justMyCode": true,
             "console": "integratedTerminal",
@@ -482,7 +591,7 @@
             "program": "./scripts/analyze_planning_results.py",
             "args": [
                 "metrics",
-                "results/dual-all-compare_1593928708_d740f44939/",
+                "results/dual-all-compare_1593969666_807afaacf0/",
                 "analysis_params/victor_dual_rope.json"
             ],
             "justMyCode": true,
@@ -537,7 +646,7 @@
             "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
             "program": "./scripts/split_results.py",
             "args": [
-                "results/dual-all-compare_1593928708_d740f44939/classifier_0",
+                "results/dual-all-compare_1593969666_807afaacf0/classifier_0",
             ],
             "console": "integratedTerminal",
             "justMyCode": true
