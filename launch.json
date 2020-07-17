@@ -1,0 +1,1129 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "collect phase 1 data [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/collect_dynamics_data.py",
+            "args": [
+                "gazebo",
+                "dragging",
+                "collect_dynamics_params/dragging_no_obs.json",
+                "1024",
+                "fwd_model_data/dragging_no_obs"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 1
+            }
+        },
+        {
+            "name": "train dynamics [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/state_space_dynamics",
+            "program": "./scripts/train_test.py",
+            "args": [
+                "train",
+                "fwd_model_data/dragging_no_obs_1594137516_a43e918715_1024",
+                "hparams/unconstrained_dynamics/dragging_no_obs.json",
+                "-l",
+                "dragging_no_obs",
+                "--ensemble-idx",
+                "0"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 2
+            }
+        },
+        {
+            "name": "collect phase 1 data [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/collect_dynamics_data.py",
+            "args": [
+                "gazebo",
+                "dual",
+                "collect_dynamics_params/dual_no_obs.json",
+                "2048",
+                "fwd_model_data/no_victor_dual_no_obs"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 1
+            }
+        },
+        {
+            "name": "train dynamics",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/state_space_dynamics",
+            "program": "./scripts/train_test.py",
+            "args": [
+                "train",
+                "fwd_model_data/no_victor_dual_no_obs_longer",
+                "hparams/unconstrained_dynamics/no_victor_dual_no_obs.json",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 2
+            }
+        },
+        {
+            "name": "train full dynamics [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/state_space_dynamics",
+            "program": "./scripts/train_test.py",
+            "args": [
+                "train",
+                "fwd_model_data/dragging_obs1+L10",
+                "fwd_model_data/dragging_no_obs1",
+                "hparams/full_dynamics/dragging.json",
+                "-l",
+                "dragging_full_dynamics",
+                "--batch-size",
+                "64",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 3
+            }
+        },
+        {
+            "name": "train full dynamics [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/state_space_dynamics",
+            "program": "./scripts/train_test.py",
+            "args": [
+                "train",
+                "fwd_model_data/victor_dual_obs_6+L10",
+                "hparams/full_dynamics/dual.json",
+                "--batch-size",
+                "8",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 3
+            }
+        },
+        {
+            "name": "collect phase 2 data [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/collect_dynamics_data.py",
+            "args": [
+                "gazebo",
+                "dragging",
+                "collect_dynamics_params/dragging_obs.json",
+                "2048",
+                "fwd_model_data/dragging_obs"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 4
+            }
+        },
+        {
+            "name": "collect phase 2 data [val]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/collect_dynamics_data.py",
+            "args": [
+                "gazebo",
+                "dual",
+                "collect_dynamics_params/val_obs.json",
+                "2048",
+                "fwd_model_data/val_obs",
+                "--seed",
+                "34"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [val]",
+                "order": 4
+            }
+        },
+        {
+            "name": "collect phase 2 data [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/collect_dynamics_data.py",
+            "args": [
+                "gazebo",
+                "dual",
+                "collect_dynamics_params/dual_obs.json",
+                "2048",
+                "fwd_model_data/victor_dual_obs"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 4
+            }
+        },
+        {
+            "name": "make classifier dataset (1-step) [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/make_classifier_dataset.py",
+            "args": [
+                "fwd_model_data/dragging_obs1",
+                "labeling_params/dragging_onestep.json",
+                "dy_trials/dragging_no_obs_0/best_checkpoint",
+                "dy_trials/dragging_no_obs_1/best_checkpoint",
+                "dy_trials/dragging_no_obs_2/best_checkpoint",
+                "dy_trials/dragging_no_obs_3/best_checkpoint",
+                "dy_trials/dragging_no_obs_4/best_checkpoint",
+                "dy_trials/dragging_no_obs_5/best_checkpoint",
+                "dy_trials/dragging_no_obs_6/best_checkpoint",
+                "dy_trials/dragging_no_obs_7/best_checkpoint",
+                "classifier_data/dragging_onestep",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 5
+            }
+        },
+        {
+            "name": "make classifier dataset [val]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/make_classifier_dataset.py",
+            "args": [
+                "fwd_model_data/val_obs_1594795637_f0779dfcda_2048",
+                "labeling_params/dual.json",
+                "dy_trials/no_victor_longer_0/best_checkpoint",
+                "dy_trials/no_victor_longer_1/best_checkpoint",
+                "dy_trials/no_victor_longer_2/best_checkpoint",
+                "dy_trials/no_victor_longer_3/best_checkpoint",
+                "dy_trials/no_victor_longer_4/best_checkpoint",
+                "dy_trials/no_victor_longer_5/best_checkpoint",
+                "dy_trials/no_victor_longer_6/best_checkpoint",
+                "dy_trials/no_victor_longer_7/best_checkpoint",
+                "classifier_data/val",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [val]",
+                "order": 5
+            }
+        },
+        {
+            "name": "make classifier dataset [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/make_classifier_dataset.py",
+            "args": [
+                "fwd_model_data/victor_dual_obs_6",
+                "labeling_params/dual.json",
+                "dy_trials/no_victor_longer_0/best_checkpoint",
+                "dy_trials/no_victor_longer_1/best_checkpoint",
+                "dy_trials/no_victor_longer_2/best_checkpoint",
+                "dy_trials/no_victor_longer_3/best_checkpoint",
+                "dy_trials/no_victor_longer_4/best_checkpoint",
+                "dy_trials/no_victor_longer_5/best_checkpoint",
+                "dy_trials/no_victor_longer_6/best_checkpoint",
+                "dy_trials/no_victor_longer_7/best_checkpoint",
+                "classifier_data/victor_dual_obs_6_h6",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 5
+            }
+        },
+        {
+            "name": "train classifier [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/train_test_classifier.py",
+            "args": [
+                "train",
+                "classifier_data/dragging_onestep",
+                "hparams/rope_dragging.json",
+                "-l",
+                "dragging_onstep",
+                "--batch-size",
+                "64"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 6
+            }
+        },
+        {
+            "name": "train classifier [val]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/train_test_classifier.py",
+            "args": [
+                "train",
+                "classifier_data/val/",
+                "hparams/dual.json",
+                "val_h2"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [val]",
+                "order": 6
+            }
+        },
+        {
+            "name": "train recovery [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/train_test_recovery.py",
+            "args": [
+                "train",
+                "recovery_data/dual-scored_h2_a128",
+                "hparams/recovery/dual.json",
+                "trials/dual-balance-no-uncertainty/July_12_11-16-37_42d7b3db8e/best_checkpoint/",
+                "--batch-size",
+                "16",
+                "--epochs",
+                "100",
+                "-l",
+                "debugging",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 7
+            }
+        },
+        {
+            "name": "train classifier [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/train_test_classifier.py",
+            "args": [
+                "train",
+                "classifier_data/victor_dual_obs_6_h2/",
+                "hparams/classifier/dual.json",
+                "--batch-size",
+                "1",
+                "--seed",
+                "1"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 6
+            }
+        },
+        {
+            "name": "make recovery dataset [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/make_recovery_dataset.py",
+            "args": [
+                "fwd_model_data/dragging_obs1",
+                "labeling_params/dragging_recovery.json",
+                "dy_trials/dragging_no_obs_0/best_checkpoint",
+                "dy_trials/dragging_no_obs_1/best_checkpoint",
+                "dy_trials/dragging_no_obs_2/best_checkpoint",
+                "dy_trials/dragging_no_obs_3/best_checkpoint",
+                "dy_trials/dragging_no_obs_4/best_checkpoint",
+                "dy_trials/dragging_no_obs_5/best_checkpoint",
+                "dy_trials/dragging_no_obs_6/best_checkpoint",
+                "dy_trials/dragging_no_obs_7/best_checkpoint",
+                "cl_trials/dragging_z4/July_09_22-31-26_25b0c9a7be/best_checkpoint/",
+                "recovery_data/dragging",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 7
+            }
+        },
+        {
+            "name": "make recovery dataset [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/make_recovery_dataset.py",
+            "args": [
+                "fwd_model_data/victor_dual_obs_6",
+                "labeling_params/dual_recovery.json",
+                "dy_trials/no_victor_longer_0/best_checkpoint",
+                "cl_trials/dual-balance-no-uncertainty/July_11_15-25-23_eccab5e838/best_checkpoint",
+                "recovery_data/dual-5.5",
+                "--batch-size",
+                "1",
+                "--start-at",
+                "4000",
+                "--stop-at",
+                "5000"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 7
+            }
+        },
+        {
+            "name": "planning evaluation (full dynamics) [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/planning_evaluation.py",
+            "args": [
+                "gazebo",
+                "planner_configs/victor_dual/full_dynamics.json",
+                "--nickname",
+                "debugging-full_dynamics",
+                "--n-total-plans",
+                "10",
+                "--no-execution"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 8
+            }
+        },
+        {
+            "name": "recovery evaluation (random) [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/planning_evaluation.py",
+            "args": [
+                "gazebo",
+                "planner_configs/victor_dual/classifier.json",
+                "--seed",
+                "8",
+                "--nickname",
+                "debugging-classifier",
+                "--n-plans",
+                "8",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 8
+            }
+        },
+        {
+            "name": "planning evaluation (classifier) [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/planning_evaluation.py",
+            "args": [
+                "gazebo",
+                "planner_configs/victor_dual/classifier.json",
+                "--seed",
+                "8",
+                "--nickname",
+                "debugging-classifier",
+                "--n-plans",
+                "1",
+                "-vv"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 8
+            }
+        },
+        {
+            "name": "planning evaluation (nn recovery) [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/planning_evaluation.py",
+            "args": [
+                "gazebo",
+                "planner_configs/victor_dual/classifier_nn_recovery.json",
+                "--nickname",
+                "recovery-nn",
+                "--n-plans",
+                "25",
+                "-vv"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 9
+            }
+        },
+        {
+            "name": "planning evaluation (random recovery) [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/planning_evaluation.py",
+            "args": [
+                "gazebo",
+                "planner_configs/victor_dual/classifier_random_recovery.json",
+                "--seed",
+                "2",
+                "--nickname",
+                "recovery-random",
+                "--n-plans",
+                "25"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 9
+            }
+        },
+        {
+            "name": "planning evaluation (simple recovery) [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/planning_evaluation.py",
+            "args": [
+                "gazebo",
+                "planner_configs/victor_dual/classifier_simple_recovery.json",
+                "--seed",
+                "2",
+                "--nickname",
+                "recovery-simple",
+                "--n-plans",
+                "25"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 9
+            }
+        },
+        {
+            "name": "planning evaluation (none) [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/planning_evaluation.py",
+            "args": [
+                "gazebo",
+                "planner_configs/victor_dual/none.json",
+                "--nickname",
+                "debugging-none",
+                "-vv",
+                "--n-total-plans",
+                "10"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 8
+            }
+        },
+        {
+            "name": "planning evaluation (full dynamics) [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/planning_evaluation.py",
+            "args": [
+                "gazebo",
+                "planner_configs/dragging/full_dynamics.json",
+                "--nickname",
+                "debugging-dragging-full-dynamics",
+                "--n-total-plans",
+                "4",
+                "-vv",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 8
+            }
+        },
+        {
+            "name": "planning evaluation (classifier) [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/planning_evaluation.py",
+            "args": [
+                "gazebo",
+                "planner_configs/dragging/classifier.json",
+                "--nickname",
+                "debugging-dragging-classifier",
+                "--n-total-plans",
+                "1",
+                "--no-execution",
+                "-vv"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 8
+            }
+        },
+        {
+            "name": "planning evaluation (collision checker) [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/planning_evaluation.py",
+            "args": [
+                "gazebo",
+                "planner_configs/dragging/collision_checking.json",
+                "--nickname",
+                "debugging-cc",
+                "--n-total-plans",
+                "10",
+                "-vv",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dragging]",
+                "order": 8
+            }
+        },
+        {
+            "name": "planning evaluation (collision checker) [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/planning_evaluation.py",
+            "args": [
+                "gazebo",
+                "planner_configs/victor_dual/collision_checking.json",
+                "--nickname",
+                "debugging-cc",
+                "--n-total-plans",
+                "1",
+                "-vv",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 8
+            }
+        },
+        {
+            "name": "analyze recovery results [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/analyze_recovery_results.py",
+            "args": [
+                "results/recovery-random-compare_1594829449_d3267f255c",
+                "results/recovery-random-compare_1594832740_4231c9e6fe"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 10
+            }
+        },
+        {
+            "name": "analyze planning evaluation [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/analyze_planning_results.py",
+            "args": [
+                "metrics",
+                "results/dual-all-compare_1593969666_807afaacf0/",
+                "analysis_params/victor_dual_rope.json"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "main workflow [dual]",
+                "order": 8
+            }
+        },
+        {
+            "name": "viz phase 1 dynamics dataset [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/visualize_dynamics_dataset.py",
+            "args": [
+                "fwd_model_data/no_victor_dual_no_obs_longer",
+                "3d"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization [dual]",
+                "order": 1
+            }
+        },
+        {
+            "name": "viz phase 1 dynamics dataset [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/visualize_dynamics_dataset.py",
+            "args": [
+                "fwd_model_data/dragging_no_obs_1594137516_a43e918715_1024/",
+                "3d"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization [dragging]",
+                "order": 1
+            }
+        },
+        {
+            "name": "viz phase 2 dynamics dataset [val]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/visualize_dynamics_dataset.py",
+            "args": [
+                "fwd_model_data/val_obs_1594795637_f0779dfcda_2048/",
+                "3d"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization [val]",
+                "order": 2
+            }
+        },
+        {
+            "name": "viz phase 2 dynamics dataset [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/visualize_dynamics_dataset.py",
+            "args": [
+                "fwd_model_data/victor_dual_obs_6",
+                "3d",
+                "--mode",
+                "all",
+                "--start-at",
+                "1000"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization [dual]",
+                "order": 2
+            }
+        },
+        {
+            "name": "viz dynamics model [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/state_space_dynamics",
+            "program": "./scripts/train_test.py",
+            "args": [
+                "viz",
+                "fwd_model_data/victor_dual_obs_6",
+                "trials/dual_full_dynamics/July_08_16-25-56_cb6fb59301/best_checkpoint",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization [dual]",
+                "order": 2
+            }
+        },
+        {
+            "name": "viz phase 2 dynamics dataset [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_data",
+            "program": "./scripts/visualize_dynamics_dataset.py",
+            "args": [
+                "fwd_model_data/dragging_obs_1594161809_0ded214700_1024",
+                "3d"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization [dragging]",
+                "order": 2
+            }
+        },
+        {
+            "name": "viz classifier dataset [dragging]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/visualize_classifier_dataset.py",
+            "args": [
+                "classifier_data/dragging_onestep",
+                "3d"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization [dragging]",
+                "order": 3
+            }
+        },
+        {
+            "name": "viz classifier dataset [val]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/visualize_classifier_dataset.py",
+            "args": [
+                "classifier_data/val",
+                "3d",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization [val]",
+                "order": 3
+            }
+        },
+        {
+            "name": "viz classifier dataset [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/visualize_classifier_dataset.py",
+            "args": [
+                "classifier_data/victor_dual_obs_6_h2",
+                "3d",
+                "--only-negative"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization [dual]",
+                "order": 3
+            }
+        },
+        {
+            "name": "viz recovery dataset [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/visualize_recovery_dataset.py",
+            "args": [
+                "recovery_data/dual-scored_h2_a128"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization [dual]",
+                "order": 3
+            }
+        },
+        {
+            "name": "plot reults [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/plot_results.py",
+            "args": [
+                "results/duall-all3-compare_1594302425_5949d80845/classifier_no_stdev_1",
+                "0-49",
+                "labeling_params/dual.json",
+                "--filter-by-status",
+                "timeout",
+                "--show-tree"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization [dual]",
+                "order": 4
+            }
+        },
+        {
+            "name": "test occupancy",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_gazebo_python",
+            "program": "./scripts/test_occupancy_service.py",
+            "args": [],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "visualization",
+                "order": 5
+            }
+        },
+        {
+            "name": "world_interaction",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/devel_debug/lib/victor_3d_rope_shim/world_interaction",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/src",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "simulation",
+                "order": 2
+            }
+        },
+        {
+            "name": "debug victor shim",
+            "type": "ros",
+            "request": "launch",
+            "target": "/home/pmitrano/conda_ws/link_bot/victor_3d_rope_shim/launch/victor_shim.launch",
+            "presentation": {
+                "hidden": false,
+                "group": "simulation",
+                "order": 2
+            }
+        },
+        {
+            "name": "eval dynamics",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/state_space_dynamics",
+            "program": "./scripts/train_test.py",
+            "args": [
+                "eval",
+                "fwd_model_data/victor_dual_no_obs_1593271835_5f9f2372fa_1024",
+                "trials/victor_dual_no_obs_1_0/June_27_15-28-42_df4b5d7c4e/best_checkpoint"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "analysis",
+                "order": 0
+            }
+        },
+        {
+            "name": "compare models [dual, no obs]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/state_space_dynamics",
+            "program": "./scripts/compare_models.py",
+            "args": [
+                "generate",
+                "fwd_model_data/no_victor_dual_no_obs_longer",
+                "comparisons/dual_no_obs.json",
+                "victor_dual_rope_phase_1_comparison"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "analysis",
+                "order": 2
+            }
+        },
+        {
+            "name": "test model",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/state_space_dynamics",
+            "program": "./scripts/test_model.py",
+            "args": [
+                "trials/no_victor_dual_no_obs_1/best_checkpoint",
+                "test_configs/debugging.json",
+                "labeling_params/dual.json",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "analysis",
+                "order": 1
+            }
+        },
+        {
+            "name": "test classifier [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/test_classifier.py",
+            "args": [
+                "test_configs/dual_crash.json",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "analysis [dual]",
+                "order": 2
+            }
+        },
+        {
+            "name": "eval classifier [dual]",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_classifiers",
+            "program": "./scripts/train_test_classifier.py",
+            "args": [
+                "eval",
+                "classifier_data/victor_dual_obs_6_h2",
+                "trials/dual-balance/July_11_13-20-26_8ca7b28567/best_checkpoint",
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "analysis [dual]",
+                "order": 3
+            }
+        },
+        {
+            "name": "analyze planning results",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/analyze_planning_results.py",
+            "args": [
+                "metrics",
+                "results/dual-all-compare_1593969666_807afaacf0/",
+                "analysis_params/victor_dual_rope.json"
+            ],
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "analysis",
+                "order": 3
+            }
+        },
+        {
+            "name": "arm command gui",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/kuka_iiwa_interface/victor_hardware_interface",
+            "program": "./scripts/arm_command_gui.py",
+            "args": [],
+            "console": "integratedTerminal",
+            "presentation": {
+                "hidden": false,
+                "group": "robot tools",
+                "order": 2
+            }
+        },
+        {
+            "name": "split results",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src/link_bot/link_bot_planning",
+            "program": "./scripts/split_results.py",
+            "args": [
+                "results/dual-all-compare_1593969666_807afaacf0/classifier_0",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
